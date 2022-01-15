@@ -1,0 +1,33 @@
+{# Funciones predefinidas #}
+{{ nombre }}<br/>
+
+{#obtener el minimo del array#}
+{{ min([9,11,6,10,2]) }}<br/>
+{#obtener el maximo del array#}
+{{ max([9,11,6,10,2]) }}<br/>
+{# random #}
+{{ random(animales) }}<br/>
+{# rango del 0 al 100 salando 5 en cada iteracion #}
+{% for i in range(0,100,5)  %}
+    {{ i }} <br/>
+{% endfor %}
+
+
+{# Filtros#}
+<h1>Filtros</h1>
+{# longitud #}
+{{ animales|length }}
+
+{# eliminar espais davant i darrere#}
+{% set email = '    email@email.com    ' %} }}
+{{ dump(email) }}
+{{ dump(email|trim) }}
+{# posar en majuscules#}
+{{ dump(email|trim|upper) }}
+{# posar en minuscules#}
+{{ dump(email|trim|lower) }}
+
+{# extensiones eprsonalizadas #}
+<h1>Extensiones personalizadas</h1>
+{{ multiplicar(2)|raw }}
+{{ 17|multiplicar|raw }}

@@ -1,0 +1,59 @@
+{% extends 'layouts/master.html.twig' %}
+
+{% block titulo %} Animales {% endblock %}
+
+{% block cabecera %} 
+    {{ parent() }}
+    <h2>{{ title }}</h2> 
+{% endblock %}
+{% block contenido %}
+    {# per fer comentaris en block
+    <h1>{{ title }}</h1>
+    <h2>Tu nombre es : {{ nombre }}</h2>
+    <h3>Tus apellidos son : {{ apellidos }}</h3>
+    #}
+    
+    {# Crear Variable#}
+    {% set perro = 'Pastor aleman' %}
+    <h4>{{ perro }}</h4>
+    
+    {# Tabajar con arrays #}
+    {{ dump(animales) }}
+    {{ animales[2] }}
+    
+    {# arrays associativos#}
+    {{ dump(aves) }}
+    {{ aves.tipo ~ ' - ' ~ aves.raza }}
+    
+    {# condicional #}
+    {% if aves.tipo == 'palomo' %}
+        <h1>Cuidado un palomo volador</h1>
+    {% else  %}
+        <h2>No hay palomos</h2>
+    {% endif %}
+    
+    {# Bucles#}
+    {% if animales|length >=0 %}
+        <ul>
+            {% for animal in animales %}
+                <li>
+                    {{animal}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% for i in 0..10 %}
+        {{ i }}<br/>
+    {% endfor %}
+    {% if aves.color starts with 'gr' %}
+        <h1>Empieza por G</h1>
+       
+    {% endif %}
+    {% if aves.color ends with 's' %}
+        <h1>acaba en S</h1>
+       
+    {% endif %}
+    {{ include('partials/funciones.html.twig',{'nombre':'albert aviñó'}) }}
+    
+    
+{% endblock %}
